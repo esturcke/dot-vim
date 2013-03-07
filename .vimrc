@@ -27,6 +27,9 @@ syntax on
 set mouse=a
 scriptencoding utf-8
 
+" use default osx clipboard
+set clipboard=unnamed
+
 " always switch to the current file directory.
 autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 
