@@ -73,7 +73,11 @@ set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
 set scrolljump=5                " lines to scroll when cursor leaves screen
 set scrolloff=3                 " minimum lines to keep above and below cursor
 
-set nowrap                      " wrap long lines
+set wrap                        " wrap long lines
+set linebreak                   " wrap on word boundaries
+set textwidth=0                 " don't insert line breaks
+set wrapmargin=0                " don't insert line breaks
+set formatoptions+=l
 set autoindent                  " indent at the same level of the previous line
 set shiftwidth=4                " use indents of 4 spaces
 set expandtab                   " tabs are spaces, not tabs
