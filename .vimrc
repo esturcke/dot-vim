@@ -21,6 +21,7 @@ Bundle 'leshill/vim-json'
 Bundle 'groenewege/vim-less'
 Bundle 'taxilian/vim-web-indent'
 Bundle 'tpope/vim-markdown'
+Bundle 'derekwyatt/vim-scala'
 
 filetype plugin indent on     " required!
 syntax on
