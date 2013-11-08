@@ -22,6 +22,9 @@ Bundle 'groenewege/vim-less'
 Bundle 'taxilian/vim-web-indent'
 Bundle 'tpope/vim-markdown'
 Bundle 'derekwyatt/vim-scala'
+Bundle 'vim-perl/vim-perl'
+Bundle 'Shougo/neocomplcache'
+Bundle 'othree/html5.vim'
 
 filetype plugin indent on     " required!
 syntax on
@@ -81,7 +84,6 @@ set wrapmargin=0                " don't insert line breaks
 set formatoptions+=l
 set autoindent                  " indent at the same level of the previous line
 set shiftwidth=4                " use indents of 4 spaces
-set expandtab                   " tabs are spaces, not tabs
 set tabstop=4                   " an indentation every four columns
 set softtabstop=4               " let backspace delete indent
 "set matchpairs+=<:>                " match, to be used with %
@@ -90,13 +92,16 @@ set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
 " Remove trailing whitespaces and ^M chars
 autocmd FileType c,cpp,java,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 autocmd BufNewFile,BufRead *.html.twig set filetype=html.twig
+autocmd BufNewFile,BufRead *.tt set filetype=html
 
 " Syntax of these languages is fussy over tabs Vs spaces
 autocmd FileType xml setlocal ts=4 sts=4 sw=4 noexpandtab
 autocmd FileType java setlocal ts=4 sts=4 sw=4 noexpandtab
 autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType yaml setlocal ts=4 sts=4 sw=4 expandtab
 autocmd FileType json setlocal ts=3 sts=3 sw=3 expandtab
+autocmd FileType perl setlocal ts=4 sts=4 sw=4 expandtab
+autocmd FileType tt setlocal ts=4 sts=4 sw=4 expandtab
 
 let mapleader = ','
 nnoremap Y y$
@@ -117,6 +122,8 @@ nmap <Leader>ac <Plug>ToggleAutoCloseMappings
 
 nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a=> :Tabularize /=><CR>
+vmap <Leader>a=> :Tabularize /=><CR>
 nmap <Leader>a: :Tabularize /:<CR>
 vmap <Leader>a: :Tabularize /:<CR>
 nmap <Leader>a:: :Tabularize /:\zs<CR>
@@ -125,6 +132,10 @@ nmap <Leader>a, :Tabularize /,<CR>
 vmap <Leader>a, :Tabularize /,<CR>
 nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+nmap <Leader>a], :Tabularize /],<CR>
+vmap <Leader>a], :Tabularize /],<CR>
+nmap <Leader>a] :Tabularize /]<CR>
+vmap <Leader>a] :Tabularize /]<CR>
 
 " The following function automatically aligns when typing a
 " supported character
