@@ -25,6 +25,7 @@ Bundle 'derekwyatt/vim-scala'
 Bundle 'vim-perl/vim-perl'
 Bundle 'Shougo/neocomplcache'
 Bundle 'othree/html5.vim'
+Bundle 'elixir-lang/vim-elixir'
 
 filetype plugin indent on     " required!
 syntax on
@@ -76,7 +77,7 @@ set wildmode=list:longest,full  " command <Tab> completion, list matches, then l
 set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
 set scrolljump=5                " lines to scroll when cursor leaves screen
 set scrolloff=3                 " minimum lines to keep above and below cursor
-
+set expandtab                   " use spaces
 set wrap                        " wrap long lines
 set linebreak                   " wrap on word boundaries
 set textwidth=0                 " don't insert line breaks
@@ -157,8 +158,11 @@ let g:ctrlp_working_path_mode = 2
 nnoremap <silent> <D-t> :CtrlP<CR>
 nnoremap <silent> <D-r> :CtrlPMRU<CR>
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-    \ 'file': '\.exe$\|\.so$\|\.dll$' }
+    \ 'dir':  '\v[\/]\.(git|hg|svn)$|target$',
+    \ 'file': '\v\.(exe|so|dll|class)$',
+    \ 'link': 'some_bad_symbolic_links',
+    \ }
+
 
 " Fugative
 nnoremap <silent> <leader>gs :Gstatus<CR>
