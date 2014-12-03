@@ -4,29 +4,30 @@ filetype off                   " required for vundle
 set background=dark
 
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
 " let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " Bundles
-Bundle 'tpope/vim-fugitive'
-Bundle 'kien/ctrlp.vim'
-Bundle 'tpope/vim-surround'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'godlygeek/tabular'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'leshill/vim-json'
-Bundle 'groenewege/vim-less'
-Bundle 'taxilian/vim-web-indent'
-Bundle 'tpope/vim-markdown'
-Bundle 'derekwyatt/vim-scala'
-Bundle 'vim-perl/vim-perl'
-Bundle 'Shougo/neocomplcache'
-Bundle 'othree/html5.vim'
-Bundle 'elixir-lang/vim-elixir'
+Plugin 'tpope/vim-fugitive'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'godlygeek/tabular'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'leshill/vim-json'
+Plugin 'groenewege/vim-less'
+Plugin 'taxilian/vim-web-indent'
+Plugin 'tpope/vim-markdown'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'vim-perl/vim-perl'
+Plugin 'Shougo/neocomplcache'
+Plugin 'othree/html5.vim'
+Plugin 'elixir-lang/vim-elixir'
 
+call vundle#end()
 filetype plugin indent on     " required!
 syntax on
 set mouse=a
