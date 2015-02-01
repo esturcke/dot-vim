@@ -23,9 +23,9 @@ Plugin 'taxilian/vim-web-indent'
 Plugin 'tpope/vim-markdown'
 Plugin 'derekwyatt/vim-scala'
 Plugin 'vim-perl/vim-perl'
-Plugin 'Shougo/neocomplcache'
 Plugin 'othree/html5.vim'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 filetype plugin indent on     " required!
@@ -164,6 +164,8 @@ let g:ctrlp_custom_ignore = {
     \ 'link': 'some_bad_symbolic_links',
     \ }
 
+" comma comma to remove highlighting
+map <silent> <Leader><Leader> :nohlsearch<cr>
 
 " Fugative
 nnoremap <silent> <leader>gs :Gstatus<CR>
@@ -172,3 +174,6 @@ nnoremap <silent> <leader>gc :Gcommit<CR>
 nnoremap <silent> <leader>gb :Gblame<CR>
 nnoremap <silent> <leader>gl :Glog<CR>
 nnoremap <silent> <leader>gp :Git push<CR>
+
+" Use ag to match files
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
