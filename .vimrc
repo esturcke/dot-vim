@@ -1,6 +1,9 @@
 set nocompatible               " be iMproved
 filetype off                   " required for vundle
 
+" autocommit vimrc
+autocmd! bufwritepost .vimrc source %
+
 set background=dark
 
 set rtp+=~/.vim/bundle/vundle/
@@ -15,6 +18,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
+"Plugin 'chriskempson/base16-vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'leshill/vim-json'
@@ -25,7 +29,12 @@ Plugin 'derekwyatt/vim-scala'
 Plugin 'vim-perl/vim-perl'
 Plugin 'othree/html5.vim'
 Plugin 'elixir-lang/vim-elixir'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'rking/ag.vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'ervandew/supertab'
+Plugin 'mattn/emmet-vim'
+" Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 filetype plugin indent on     " required!
@@ -33,24 +42,38 @@ syntax on
 set mouse=a
 scriptencoding utf-8
 
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+let g:UltiSnipsEditSplit="vertical"
+
 " use default osx clipboard
 set clipboard=unnamed
 
 " always switch to the current file directory.
 autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 
+" replace all by default
+set gdefault
+
 set spell
 set history=1000
 set shortmess+=filmnrxoOtT
 
 let g:solarized_termcolors=256
+"let base16colorspace=256
 color solarized 
+"color base16-default
 set showmode
 set cursorline
 
 set ruler
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
 set showcmd
+
+" Use relative line numbers
+set rnu
 
 if has('statusline')
     set laststatus=2
@@ -126,6 +149,8 @@ nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a=> :Tabularize /=><CR>
 vmap <Leader>a=> :Tabularize /=><CR>
+nmap <Leader>a== :Tabularize /==<CR>
+vmap <Leader>a== :Tabularize /==<CR>
 nmap <Leader>a: :Tabularize /:<CR>
 vmap <Leader>a: :Tabularize /:<CR>
 nmap <Leader>a:: :Tabularize /:\zs<CR>
@@ -176,4 +201,12 @@ nnoremap <silent> <leader>gl :Glog<CR>
 nnoremap <silent> <leader>gp :Git push<CR>
 
 " Use ag to match files
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_user_command = 'ag --skip-vcs-ignores %s -l --nocolor -g ""'
+
+" Change cursor shape between insert and normal mode in iTerm2.app
+if $TERM_PROGRAM =~ "iTerm"
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7\<Esc>]Pl00bdff\<Esc>\\" " Vertical bar in insert mode
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7\<Esc>]Plccaa55\<Esc>\\" " Block in normal mode
+endif
+
+com! FormatJSON %!python -m json.tool
