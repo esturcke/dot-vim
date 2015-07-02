@@ -34,6 +34,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'ervandew/supertab'
 Plugin 'mattn/emmet-vim'
+Plugin 'lambdatoast/elm.vim'
 " Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
