@@ -4,4 +4,6 @@ ln -is ${PWD}/.vimrc ~/.vimrc
 ln -is ${PWD}/.gvimrc ~/.gvimrc
 ln -s ${PWD}/.vim ~/.vim
 ln -is ${PWD}/.vrapperrc ~/.vrapperrc
+ln -s ~/.vimrc ~/.nvimrc
+ln -s ~/.vim ~/.nvim
 vim +BundleInstall +qall
